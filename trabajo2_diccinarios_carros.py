@@ -95,51 +95,61 @@ def modificarVenta():
     confir = False
     lista = []
     tipoLista = True
+    
     for i in carros:
         if i == placa_auto:
             confir = True
             
     if confir == True:
 
-        ## Guargar ventas en lista ya sea una venta o mas de una
-        try:
-            pos = 0
+        if len(carros[placa_auto]['Ventas']) > 0:
+            ## Guargar ventas en lista ya sea una venta o mas de una
+            ## Si es mas de una venta, las guarda como tuplas distintas
+            try:
+                pos = 0
+                while pos < len(carros[placa_auto]['Ventas']):
+                    lista.append(carros[placa_auto]['Ventas'][pos])
+                    pos += 1
+            except:
+                lista.append(carros[placa_auto]['Ventas'])
+                tipoLista = False
+
+            ## Imprimo las ventas con placas suministrada
+
+            opc = 0
             while True:
-                lista.append(carros[placa_auto]['Ventas'][pos])
-                pos += 1
-                print('List')
-        except:
-            lista.append(carros[placa_auto]['Ventas'])
-            tipoista = False
+                cont = 0
+                for j in lista:
+                    print (cont+1, j)
+                    print ('\n')
+                    cont += 1
+                opc = input("Digite una opcion de la venta a modificar: ")
+                if opc.isdigit() == True:
+                    if int(opc) > 0 and int(opc) <= len(lista):
+                        break
 
-        ## Imprimo las ventas con placas suministradas
+            print('\n')
+            valor = input("Digite el nuevo valor de la venta: ")
+            ##Creacion directorio con nueva venta
+            
+            venta = lista[int(opc)-1]
+            ventaActualizada = {'valor':valor}
+            venta.update(ventaActualizada)
+            lista[int(opc)-1] = venta
 
-        opc = 0
-        while True:
-            cont = 0
-            for j in lista:
-                print (cont+1, j)
-                print ('\n')
-                cont += 1
-            opc = input("Digite una opcion de la venta a modificar: ")
-            if opc.isdigit() == True:
-                if int(opc) > 0 and int(opc) <= len(lista):
-                    break
+            ##se sobreescribe ventas
+            carros[placa_auto]['Ventas'] = lista
 
-        if 
-        venta = carros[placa_auto]['Ventas']
-        if len(ventas) > 0:
-            lista.append(ventas)
+        else:
+            print("Ese carro no tiene ventas disponibles")
 
-        fecha = input("Digite la fecha de venta: ")
-        valor = input("Digite el valor del auto: ")
-        cliente = input("Digite el nuevo dueño del auto: ")
-        updateVentas = {'Fecha': fecha, 'valor': valor, 'cliente': cliente}
-        lista.append(updateVentas)
-        carros[placa_auto]['Ventas'] = lista
     else:
         print("No existe ese carro")
 
+
+def eliminarVenta():
+    pass
+        
 
 def eliminarAuto():
     placa_auto = input("Digite la placa del auto: ")
@@ -180,7 +190,7 @@ while opc != 10:
         modificarVenta()
 
     if opc == 7:  ## eliminar venta
-        print()
+        eliminarVenta()
         pass
 
     if opc == 8:  ## mostrar ventas
@@ -208,8 +218,6 @@ while opc != 10:
         opc = int(opc)
 
 """
-1..Adicionar ventas, un carro puede tener varias ventas
-2..Poder moficicar el valor de una venta
 3..Poder eliminar una venta
 4..poder listar la ventas que ha tenido un vehiculo especifico
 5..poder modificar los datos del vehiculo
