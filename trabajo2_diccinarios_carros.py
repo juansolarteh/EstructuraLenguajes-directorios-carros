@@ -100,6 +100,8 @@ def modificarVenta():
             confir = True
             
     if confir == True:
+
+        ## Guargar ventas en lista ya sea una venta o mas de una
         try:
             pos = 0
             while True:
@@ -124,8 +126,8 @@ def modificarVenta():
                 if int(opc) > 0 and int(opc) <= len(lista):
                     break
 
-        
-        ventas = carros[placa_auto]['Ventas']
+        if 
+        venta = carros[placa_auto]['Ventas']
         if len(ventas) > 0:
             lista.append(ventas)
 
@@ -211,5 +213,4 @@ while opc != 10:
 3..Poder eliminar una venta
 4..poder listar la ventas que ha tenido un vehiculo especifico
 5..poder modificar los datos del vehiculo
-
 """
