@@ -99,6 +99,7 @@ def modificarVenta():
     for i in carros:
         if i == placa_auto:
             confir = True
+            break
             
     if confir == True:
 
@@ -148,7 +149,57 @@ def modificarVenta():
 
 
 def eliminarVenta():
-    pass
+    placa_auto = input("Digite la placa del auto: ")
+    confir = False
+    lista = []
+    tipoLista = True
+    
+    for i in carros:
+        if i == placa_auto:
+            confir = True
+            break
+            
+    if confir == True:
+
+        if len(carros[placa_auto]['Ventas']) > 0:
+            ## Guargar ventas en lista ya sea una venta o mas de una
+            ## Si es mas de una venta, las guarda como tuplas distintas
+            try:
+                pos = 0
+                while pos < len(carros[placa_auto]['Ventas']):
+                    lista.append(carros[placa_auto]['Ventas'][pos])
+                    pos += 1
+            except:
+                lista.append(carros[placa_auto]['Ventas'])
+                tipoLista = False
+
+            ## Imprimo las ventas con placas suministrada
+
+            opc = 0
+            while True:
+                cont = 0
+                for j in lista:
+                    print (cont+1, j)
+                    print ('\n')
+                    cont += 1
+                opc = input("Digite una opcion de la venta que desea eliminar: ")
+                if opc.isdigit() == True:
+                    if int(opc) > 0 and int(opc) <= len(lista):
+                        break
+                    
+            ##Se borra de la lista de ventas, la seleccionada por
+            ##el usuario
+
+            lista.pop(int(opc)-1)
+
+            ##se sobreescribe ventas
+            carros[placa_auto]['Ventas'] = lista
+
+        else:
+            print("Ese carro no tiene ventas disponibles")
+
+    else:
+        print("No existe ese carro")
         
 
 def eliminarAuto():
@@ -190,8 +241,8 @@ while opc != 10:
         modificarVenta()
 
     if opc == 7:  ## eliminar venta
+        print()
         eliminarVenta()
-        pass
 
     if opc == 8:  ## mostrar ventas
         print()
@@ -218,7 +269,6 @@ while opc != 10:
         opc = int(opc)
 
 """
-3..Poder eliminar una venta
 4..poder listar la ventas que ha tenido un vehiculo especifico
 5..poder modificar los datos del vehiculo
 """
