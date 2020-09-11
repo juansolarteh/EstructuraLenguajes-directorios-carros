@@ -94,7 +94,6 @@ def modificarVenta():
     placa_auto = input("Digite la placa del auto: ")
     confir = False
     lista = []
-    tipoLista = True
     
     for i in carros:
         if i == placa_auto:
@@ -113,7 +112,6 @@ def modificarVenta():
                     pos += 1
             except:
                 lista.append(carros[placa_auto]['Ventas'])
-                tipoLista = False
 
             ## Imprimo las ventas con placas suministrada
 
@@ -152,7 +150,6 @@ def eliminarVenta():
     placa_auto = input("Digite la placa del auto: ")
     confir = False
     lista = []
-    tipoLista = True
     
     for i in carros:
         if i == placa_auto:
@@ -171,7 +168,6 @@ def eliminarVenta():
                     pos += 1
             except:
                 lista.append(carros[placa_auto]['Ventas'])
-                tipoLista = False
 
             ## Imprimo las ventas con placas suministrada
 
