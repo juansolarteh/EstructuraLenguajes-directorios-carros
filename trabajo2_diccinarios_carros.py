@@ -1,5 +1,5 @@
 carros = {'xtw-123': {
-    'Propietario': 'Jose perales', 'Referencia': 'Mazda 3', 'Modelo': 2011, 'marca': 'Mazda', 'Valor': 14222,
+    'Propietario': 'Jose perales', 'Referencia': 'Mazda 3', 'Modelo': 2011, 'marca': 'Mazda', 'Valor': 12222,
     'Ventas': {
         'Fecha': '12-12-2011', 'valor': 222222, 'cliente': 'Juanito'}
 },
