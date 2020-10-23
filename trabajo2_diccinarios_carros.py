@@ -1,6 +1,6 @@
 carros = {'xtw-123': {
     'Ventas': {
-        'Fecha': '12-12-2011', 'valor': 222222, 'cliente': 'Juanito'}
+        'Fecha': '12-12-2011', 'valor': 222222, 'cliente': 'primer commit'}
 },
 
     'mtr-981': {
